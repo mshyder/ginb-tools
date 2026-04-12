@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 import { Shield, Zap, Award } from "lucide-react";
 
 const heroSlides = [
@@ -38,20 +37,17 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative min-h-screen overflow-hidden bg-industrial-deep">
-      {/* Slideshow Background */}
+      {/* Slideshow Background (Fixed using standard CSS backgrounds) */}
       {heroSlides.map((src, i) => (
         <div
           key={src}
-          className="absolute inset-0 transition-opacity duration-[800ms] ease-in-out"
-          style={{ opacity: i === current && !isTransitioning ? 1 : 0 }}
+          className={`absolute inset-0 transition-opacity duration-[800ms] ease-in-out ${
+            i === current && !isTransitioning ? "opacity-100 z-0" : "opacity-0 -z-10"
+          }`}
         >
-          <Image
-            src={src}
-            alt={`GINB Tools hero slide ${i + 1}`}
-            fill
-            priority={i === 0}
-            className="animate-ken-burns object-cover"
-            sizes="100vw"
+          <div 
+            className="h-full w-full animate-ken-burns bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url('${src}')` }}
           />
         </div>
       ))}
@@ -61,19 +57,19 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 text-center lg:px-8">
-        {/* Large Centered Logo: Icon + Styled Text — tight pair (PNG often has right-side transparent padding; -mr pulls type in) */}
+        
+        {/* Large Centered Logo */}
         <div className="animate-fade-in-up mb-6 flex w-full max-w-[100vw] flex-col items-center gap-0 px-1 sm:inline-flex sm:w-auto sm:max-w-none sm:flex-row sm:items-center sm:justify-center sm:gap-0 sm:px-0">
-          {/* House Icon */}
+          
+          {/* House Icon (Fixed using standard img tag) */}
           <div className="shrink-0 leading-none -mr-10 sm:-mr-[4.5rem] md:-mr-24 lg:-mr-28">
-            <Image
-              src="/images/ginb-icon.png"
+            <img
+              src={`.${"/images/ginb-icon.png"}`}
               alt="GINB Tools Icon"
-              width={293}
-              height={176}
               className="block h-28 w-auto max-w-none object-left object-contain drop-shadow-[0_4px_20px_rgba(220,38,38,0.4)] sm:h-36 md:h-44"
-              priority
             />
           </div>
+          
           {/* Styled Text: GINB in white, TOOLS in red */}
           <div className="-mt-2 flex min-w-0 flex-col items-center sm:-mt-0 sm:-ml-3 sm:items-start md:-ml-4 lg:-ml-5">
             <h2 className="text-5xl font-black tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
@@ -92,8 +88,7 @@ export default function Hero() {
           className="animate-fade-in-up mt-4 text-2xl font-bold leading-tight tracking-tight text-white/80 sm:text-3xl md:text-4xl"
           style={{ animationDelay: "0.15s" }}
         >
-          Trusted Tools{" "}
-          <span className="text-brand-red">for Professionals</span>
+          Trusted Tools <span className="text-brand-red">for Professionals</span>
         </h1>
 
         {/* Subheadline */}
