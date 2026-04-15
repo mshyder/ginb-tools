@@ -1,4 +1,4 @@
-"use client";
+use client";
 
 import { ShieldCheck, Award, BadgeCheck, Scale } from "lucide-react";
 
@@ -30,7 +30,6 @@ export default function Heritage() {
     <section id="heritage" className="scroll-mt-20 bg-gray-50 py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-20">
-          {/* Left – Story */}
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-red">
               Our Heritage
@@ -41,7 +40,7 @@ export default function Heritage() {
             </h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-gray-600">
               <p>
-                Founded in 1958, GINB Tools began as a small workshop specializing in 
+                Founded in 1958, GinmTools began as a small workshop specializing in 
                 industrial-grade metallurgy. Over six decades, we&apos;ve grown into one 
                 of Europe&apos;s most trusted B2B tool suppliers.
               </p>
@@ -74,7 +73,6 @@ export default function Heritage() {
             </div>
           </div>
 
-          {/* Right – Awards Grid */}
           <div>
             <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400">
               Certifications & Standards
@@ -84,19 +82,9 @@ export default function Heritage() {
                 <div
                   key={i}
                   id={`award-card-${i}`}
-                  className="group flex flex-col items-center rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:scale-[1.02] hover:border-brand-red/20 hover:shadow-lg hover:shadow-red-50"
+                  className="group flex flex-col items-center rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:scale-[1.02] hover:border-brand-red/50 hover:shadow-md"
                 >
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50 transition-transform duration-300 group-hover:scale-105">
                     <award.icon className="h-6 w-6 text-brand-red" strokeWidth={1.5} />
                   </div>
-                  <h4 className="mt-4 text-sm font-bold text-industrial-black">{award.title}</h4>
-                  <p className="mt-1 text-xs text-gray-400">{award.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+                  <h4 className="mt-4 text-sm font-bold text-industrial-black">
